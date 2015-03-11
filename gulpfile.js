@@ -12,7 +12,7 @@ var config = {
 };
 
 loadTasks('tasks/**/*.js', gulp, config);
-gulp.task('default', ['clean', 'html', 'stylus', 'scripts', 'server', 'watch']);
+gulp.task('default', ['clean', 'copy', 'html', 'stylus', 'scripts', 'server', 'watch']);
 
 function loadTasks(tasksPattern) {
     var args = Array.prototype.slice.call(arguments, 1);

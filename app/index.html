@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="app" strict-di>
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>ES6 Playground</title>
         <link rel="stylesheet" href="css/main.css">
     </head>
-    <body>
+    <body ng-view app-root>
         <h1>ES6 Playground</h1>
         <p>Go play!</p>
+        <app-button></app-button>
+        <script src="js/angular.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>
