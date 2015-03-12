@@ -7,7 +7,7 @@ var gutil = require('gulp-util');
 var mold = require('mold-source-map');
 var source = require('vinyl-source-stream');
 
-module.exports = function (gulp, config) {
+module.exports = function module(gulp, config) {
     var files = [
         es6ify.runtime, 
         config.appDir + config.jsEntryPoint
