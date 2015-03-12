@@ -4,15 +4,20 @@ var $connect = require('gulp-connect');
 var $sourcemaps = require('gulp-sourcemaps');
 var $stylus = require('gulp-stylus');
 
-module.exports = function (gulp, config) {
+module.exports = function module(gulp, config) {
+    var options = { 
+        compress: !config.isDebug
+    };
+
+    task.waitFor = ['clean'];
     function task() {
         return gulp.src(config.appDir + 'css/main.styl')
             .pipe($sourcemaps.init())
-            .pipe($stylus({ compress: !config.isDebug }))
+            .pipe($stylus(options))
             .pipe($sourcemaps.write())
             .pipe(gulp.dest(config.distDir + 'css/'))
             .pipe($connect.reload());
     }
-    task.waitFor = ['clean'];
+    
     return task;
 };
