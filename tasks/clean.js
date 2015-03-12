@@ -1,11 +1,11 @@
 'use strict';
 
-var $clean = require('gulp-clean');
+var $del = require('del');
 
-module.exports = function module(gulp, config) {
-    function task() {
-        return gulp.src(config.distDir + '**/*')
-            .pipe($clean());
+module.exports = function (gulp, config) {
+    task.waitFor = config.dependencies.clean;
+    function task(next) {
+        $del([config.distDir], next);
     }
     return task;
 };

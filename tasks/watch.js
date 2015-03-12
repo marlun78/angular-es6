@@ -1,6 +1,7 @@
 'use strict';
 
-module.exports = function module(gulp, config) {
+module.exports = function (gulp, config) {
+    task.waitFor = config.dependencies.watch;
     function task() {
         gulp.watch(config.appDir + '**/*.js', ['scripts']);
         gulp.watch(config.appDir + '**/*.styl', ['stylus']);

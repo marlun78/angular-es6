@@ -1,19 +1,19 @@
 'use strict';
 
 var $connect = require('gulp-connect');
-var $sourcemaps = require('gulp-sourcemaps');
+var $sourceMaps = require('gulp-sourcemaps');
 var $stylus = require('gulp-stylus');
 
-module.exports = function module(gulp, config) {
+module.exports = function (gulp, config) {
     var options = { 
         compress: !config.isDebug
     };
-    task.waitFor = ['clean'];
+    task.waitFor = config.dependencies.stylus;
     function task() {
         return gulp.src(config.appDir + 'css/main.styl')
-            .pipe($sourcemaps.init())
+            .pipe($sourceMaps.init())
             .pipe($stylus(options))
-            .pipe($sourcemaps.write())
+            .pipe($sourceMaps.write())
             .pipe(gulp.dest(config.distDir + 'css/'))
             .pipe($connect.reload());
     }
