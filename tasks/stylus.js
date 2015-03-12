@@ -8,7 +8,6 @@ module.exports = function module(gulp, config) {
     var options = { 
         compress: !config.isDebug
     };
-
     task.waitFor = ['clean'];
     function task() {
         return gulp.src(config.appDir + 'css/main.styl')
@@ -18,6 +17,5 @@ module.exports = function module(gulp, config) {
             .pipe(gulp.dest(config.distDir + 'css/'))
             .pipe($connect.reload());
     }
-    
     return task;
 };
