@@ -18,7 +18,6 @@ module.exports = function module(gulp, config) {
     es6ify.traceurOverrides = { 
         blockBinding: true
     };
-
     task.waitFor = ['clean'];
     function task() {
         return browserify(files, options)
@@ -31,7 +30,6 @@ module.exports = function module(gulp, config) {
             .pipe(gulp.dest(config.distDir + '/js'))
             .pipe(connect.reload());
     }
-    
     return task;
 };
 
