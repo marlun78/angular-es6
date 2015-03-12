@@ -1,4 +1,6 @@
-import { buttonDirectiveName, buttonDirectiveFunction } from './buttonDirective';
-export const buttonModuleNs = 'app.components.button';
-angular.module(buttonModuleNs, [])
-    .directive(buttonDirectiveName, buttonDirectiveFunction);
+import * as directive from './buttonDirective';
+
+export const name = 'app.components.button';
+
+angular.module(name, [])
+    .directive(directive.name, directive.fn);
