@@ -7,14 +7,21 @@ var gutil = require('gulp-util');
 var mold = require('mold-source-map');
 var source = require('vinyl-source-stream');
 
-es6ify.traceurOverrides = { blockBinding: true };
-
 module.exports = function (gulp, config) {
+    var files = [
+        es6ify.runtime, 
+        config.appDir + config.jsEntryPoint
+    ];
+    var options = {
+        debug: config.isDebug
+    };
+    es6ify.traceurOverrides = { 
+        blockBinding: true
+    };
+
+    task.waitFor = ['clean'];
     function task() {
-        return browserify(
-            [es6ify.runtime, config.appDir + config.jsEntryPoint],
-            { debug: config.isDebug }
-        )
+        return browserify(files, options)
             .transform(inlineView)
             .transform(es6ify)
             .bundle()
@@ -24,12 +31,13 @@ module.exports = function (gulp, config) {
             .pipe(gulp.dest(config.distDir + '/js'))
             .pipe(connect.reload());
     }
-    task.waitFor = ['clean'];
+    
     return task;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
 
+// TODO: Move to separate file
 var through = require('through2');
 var fs = require('fs');
 var $path = require('path');
