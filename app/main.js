@@ -1,10 +1,9 @@
 // main.js
 import { ApplicationController } from './core/ApplicationController';
-import { buttonModuleNs } from './components/button/index';
+// Is: import * as x from 'x' syntax supported by Traceur?
+import * as button from './components/button/index';
 
-angular.module('app', [
-    buttonModuleNs
-])
+angular.module('app', [button.name])
     .directive('appRoot', appRootDirective)
     .run(initialize);
 
