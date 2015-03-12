@@ -10,7 +10,7 @@ var source = require('vinyl-source-stream');
 es6ify.traceurOverrides = { blockBinding: true };
 
 module.exports = function (gulp, config) {
-    return function () {
+    function task() {
         return browserify(
             [es6ify.runtime, config.appDir + config.jsEntryPoint],
             { debug: config.isDebug }
@@ -23,7 +23,9 @@ module.exports = function (gulp, config) {
             .pipe(source(config.jsEntryPoint))
             .pipe(gulp.dest(config.distDir + '/js'))
             .pipe(connect.reload());
-    };
+    }
+    task.waitFor = ['clean'];
+    return task;
 };
 
 ////////////////////////////////////////////////////////////////////////////////
