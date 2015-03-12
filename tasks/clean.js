@@ -1,10 +1,11 @@
 'use strict';
 
-var clean = require('gulp-clean');
+var $clean = require('gulp-clean');
 
-module.exports = function (gulp, config) {
-    return function cleanTask() {
+module.exports = function module(gulp, config) {
+    function task() {
         return gulp.src(config.distDir + '**/*')
-            .pipe(clean());
-    };
+            .pipe($clean());
+    }
+    return task;
 };
