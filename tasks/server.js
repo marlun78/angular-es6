@@ -3,7 +3,7 @@
 var $connect = require('gulp-connect');
 
 module.exports = function (gulp, config) {
-    task.waitFor = config.dependencies.server;
+    task.waitFor = config.buildStep2;
     function task() {
         return $connect.server({
             root: config.distDir,

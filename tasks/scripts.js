@@ -19,7 +19,7 @@ module.exports = function (gulp, config) {
     $es6ify.traceurOverrides = {
         blockBinding: true
     };
-    task.waitFor = config.dependencies.scripts;
+    task.waitFor = config.buildStep1;
     function task() {
         return $browserify(files, options)
             .transform($inline(config))

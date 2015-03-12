@@ -8,7 +8,7 @@ module.exports = function (gulp, config) {
     var options = { 
         compress: !config.isDebug
     };
-    task.waitFor = config.dependencies.stylus;
+    task.waitFor = config.buildStep1;
     function task() {
         return gulp.src(config.appDir + 'css/main.styl')
             .pipe($sourceMaps.init())

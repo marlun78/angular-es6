@@ -2,7 +2,7 @@
 
 module.exports = function (gulp, config) {
     var files = './node_modules/angular/angular.js';
-    task.waitFor = config.dependencies.copy;
+    task.waitFor = config.buildStep1;
     function task() {
         return gulp.src(files)
             .pipe(gulp.dest(config.distDir + '/js'));

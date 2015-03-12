@@ -1,13 +1,13 @@
 
 # TODO
-- More stable clean-task
 - Copy images
 - Template HTML
-- JSHint
 - Karma \& Jasmine
 - Deploy to ...?
 
 ## DONE
+- JSHint
+- More stable clean-task
 - Angular Template Cache (inlining instead)
 - Angular Modules Definitions (`index.js`)
 - Setup Angular App
