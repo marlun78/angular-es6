@@ -1,7 +1,7 @@
 import { ButtonController } from './ButtonController';
 
-export const buttonDirectiveName = 'appButton';
-export function buttonDirectiveFunction() {
+export const name = 'appButton';
+export function fn() {
     return {
         controller: ButtonController,
         controllerAs: 'button',
